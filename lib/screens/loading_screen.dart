@@ -3,6 +3,7 @@ import '../services/location.dart';
 import '../services/networking.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../screens/location_screen.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
@@ -45,9 +46,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton(
-          onPressed: () => print('askdgf'),
-          child: const Text('Get Weather'),
+        child: SpinKitChasingDots(
+          color: Colors.white,
+          size: 100.0
         ),
       ),
     );
