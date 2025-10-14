@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../services/get_location.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -6,13 +7,16 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            //Get the current location
+            getLocation();
           },
           child: Text('Get Location'),
         ),
