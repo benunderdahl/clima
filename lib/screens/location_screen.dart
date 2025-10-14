@@ -2,13 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:clima/util/constants.dart';
 
 class LocationScreen extends StatefulWidget {
+
+   final Map<String, dynamic> data;
+  LocationScreen({
+    required this.data
+  });
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
 
 class _LocationScreenState extends State<LocationScreen> {
+ 
+  
   @override
   Widget build(BuildContext context) {
+    var city = widget.data['name'];
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -16,7 +24,8 @@ class _LocationScreenState extends State<LocationScreen> {
             image: AssetImage('images/location_background.jpg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.white.withOpacity(0.8), BlendMode.dstATop),
+                Colors.white.withOpacity(0.8), BlendMode.dstATop
+                ),
           ),
         ),
         constraints: BoxConstraints.expand(),
@@ -62,7 +71,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "It's 🍦 time in San Francisco!",
+                  "It's 🍦 time in $city!",
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../services/location.dart';
 import '../services/networking.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import '../screens/location_screen.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
@@ -31,7 +32,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
       });
       Network network = Network(url:'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric');
       var data = await network.getData();
-      print(data);
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return LocationScreen(data: data);
+      }));
 
     } catch (e) {
       print('Error retrieving location: $e');
