@@ -16,7 +16,7 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen> {
 
-  late double temp;
+  late int temp;
   late int condition;
   late String city;
 
@@ -28,7 +28,8 @@ class _LocationScreenState extends State<LocationScreen> {
   
   void updateUI(dynamic data) {
     setState(() {
-       temp = data['main']['temp'];
+       double temper = data['main']['temp'];
+       temp = temper.toInt();
         condition = data['weather'][0]['id'];
         city = data['name'];
     });
