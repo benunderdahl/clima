@@ -1,3 +1,9 @@
+import '../services/location.dart';
+import '../services/networking.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?';
+var apiKey = dotenv.env["api_key"];
 class WeatherModel {
   String getWeatherIcon(int condition) {
     if (condition < 300) {
@@ -28,6 +34,20 @@ class WeatherModel {
       return 'You\'ll need 🧣 and 🧤';
     } else {
       return 'Bring a 🧥 just in case';
+    }
+  }
+
+  Future<dynamic> getLocation() async {
+    try {
+      Location location = Location();
+      await location.getLocation();
+  
+      Network network = Network(url:'$baseUrl=${location.latitude}&lon=${location.longitude}&appid=$apiKey(&units=metric');
+      var data = await network.getData();
+      return data;
+
+    } catch (e) {
+      print('Error retrieving location: $e');
     }
   }
 }
