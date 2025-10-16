@@ -8,7 +8,7 @@ class LocationScreen extends StatefulWidget {
 
   LocationScreen({
     super.key,
-    this.data
+    required this.data
   });
 
   @override
