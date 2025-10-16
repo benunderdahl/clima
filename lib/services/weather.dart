@@ -50,7 +50,7 @@ class WeatherModel {
 
     } catch (e) {
       print('Error retrieving location: $e');
-      return null;
+      return;
     }
   }
 }
