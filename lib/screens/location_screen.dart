@@ -35,18 +35,19 @@ class _LocationScreenState extends State<LocationScreen> {
         condition = 0;
         city = "";
         return;
-      }
+      } else {
        double temper = data['main']['temp'];
        temp = temper.toInt();
         condition = data['weather'][0]['id'];
         city = data['name'];
+      }
     });
    
   }
   
   @override
   Widget build(BuildContext context) {
-    var city = widget.data['name'];
+    
     WeatherModel weather = WeatherModel();
     return Scaffold(
       body: Container(
@@ -83,10 +84,9 @@ class _LocationScreenState extends State<LocationScreen> {
                       var typedCity = await Navigator.push(context, MaterialPageRoute(builder: (context) {
                         return CityScreen();
                       }));
-                      if (typedCity == null) {
-                        return;
-                      } else {
-                        
+                      if (typedCity != null) {
+                        var weatherData = await weather.getTypedLocation(typedCity);
+                        updateUI(weatherData);
                       }
                     },
                     child: Icon(
