@@ -53,4 +53,11 @@ class WeatherModel {
       return;
     }
   }
+
+  Future<dynamic> getTypedLocation(String city) async {
+    var url = '$baseUrl?q=$city&appid=$apiKey&units=metric';
+    Network network = Network(url: url);
+    var cityWeather = await network.getData();
+    return cityWeather;
+  }
 }

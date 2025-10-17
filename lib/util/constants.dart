@@ -20,7 +20,7 @@ const kConditionTextStyle = TextStyle(
 );
 
 
-const kInputField = InputDecoration(
+const kInputFieldDecoration = InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     icon: Icon(Icons.location_city),
